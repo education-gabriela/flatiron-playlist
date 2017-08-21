@@ -1,5 +1,5 @@
-<h2><%= @song.title %></h2>
+<h2 class="ui dividing header"><%= @song.title %></h2>
 <p><em>by <%= @song.artist.name %></em></p>
 <p><%= "Genres: #{@song.genres.map(&:name).join(", ")}" unless @song.genres.empty? %></p>
-<p><%= link_to "Edit", edit_song_path(@song) %></p>
+<p><%= link_to "Edit", edit_song_path(@song), class: "ui button" %></p>
 <p><%= link_to "All Songs", songs_path %></p>

@@ -1,5 +1,5 @@
-<h2>Artists</h2>
-<p><%= link_to "Create new Artist", new_artist_path %></p>
+<h2 class="ui dividing header">Artists</h2>
+<p><%= link_to "Create new Artist", new_artist_path, class: "ui button" %></p>
 <ul>
   <% @artists.each do |artist| %>
       <li><%= link_to artist.name, artist_path(artist) %></li>

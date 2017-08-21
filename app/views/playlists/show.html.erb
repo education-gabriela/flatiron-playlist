@@ -1,9 +1,9 @@
-<h1><%=@playlist.name%><h1>
-  <h2>Created By:<%=@playlist.user.name%></h2>
+<h1 class="ui dividing header"><%= @playlist.name %></h1>
+<p><em>Created By: <%= @playlist.user.name %></em></p>
 
-  <!-- Songs list here -->
+<!-- Songs list here -->
 
-<%if @playlist.user == current_user%>
-<%=link_to "Edit this Playlist", edit_playlist_path(@playlist)%><br>
-<%=link_to "Delete this Playlist", playlist_path(@playlist), method: "DELETE" %>
-<%end%>
+<% if @playlist.user == current_user %>
+    <%= link_to "Edit this Playlist", edit_playlist_path(@playlist), class: "ui button" %>
+    <%= link_to "Delete this Playlist", playlist_path(@playlist), method: "DELETE" , class: "ui red button"%>
+<% end %>

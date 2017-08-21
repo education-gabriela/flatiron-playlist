@@ -1,5 +1,5 @@
-<h2>All Songs</h2>
-<p><%= link_to "Create new Song", new_song_path %></p>
+<h2 class="ui dividing header">All Songs</h2>
+<p><%= link_to "Create new Song", new_song_path, class: "ui button" %></p>
 <ul>
   <% @songs.each do |song| %>
       <li><%= link_to song.title, song_path(song) %></li>
