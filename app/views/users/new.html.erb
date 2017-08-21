@@ -1,12 +1,19 @@
-<%=form_for(@user) do |f|%>
- <!-- html: {class: "ui form"}  -->
-<%=f.label :name%><br>
-<%=f.text_field :name%><br>
-<%=f.label :email%><br>
-<%=f.text_field :email%><br>
-<%=f.label :password%><br>
-<%=f.password_field :password%><br>
-<%=f.label :password_confirmation%><br>
-<%=f.password_field :password_confirmation%><br>
-<%=f.submit%>
-<%end%>
+<%= form_for @user, html: {class: "ui form"} do |f| %>
+    <div class="five wide field">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+    <div class="five wide field">
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+    </div>
+    <div class="five wide field">
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+    </div>
+    <div class="five wide field">
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation %>
+    </div>
+    <%= f.submit class: "ui green button" %>
+<% end %>
