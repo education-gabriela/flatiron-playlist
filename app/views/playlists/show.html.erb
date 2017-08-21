@@ -1,0 +1,9 @@
+<h1><%=@playlist.name%><h1>
+  <h2>Created By:<%=@playlist.user.name%></h2>
+
+  <!-- Songs list here -->
+
+<%if @playlist.user == current_user%>
+<%=link_to "Edit this Playlist", edit_playlist_path(@playlist)%><br>
+<%=link_to "Delete this Playlist", playlist_path(@playlist), method: "DELETE" %>
+<%end%>
