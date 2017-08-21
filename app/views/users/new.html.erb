@@ -1,5 +1,5 @@
-<%=form_for(@user) do |f|%>
- <!-- html: {class: "ui form"}  -->
+<%= form_for @user, html: {class: "ui form"} do |f| %>
+    <div class="field">
 <%=f.label :name%><br>
 <%=f.text_field :name%><br>
 <%=f.label :email%><br>
@@ -8,5 +8,5 @@
 <%=f.password_field :password%><br>
 <%=f.label :password_confirmation%><br>
 <%=f.password_field :password_confirmation%><br>
-<%=f.submit%>
+ <%=f.submit class: "ui primary button"%>
 <%end%>
