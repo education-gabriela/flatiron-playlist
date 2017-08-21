@@ -1,24 +1,7 @@
-# README
+# Playlist
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Its possible to add Artists, Genres, Songs and to create a Playlist
 
-Things you may want to cover:
+The DB model is the following: 
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+![DB Model](https://gab1davila.files.wordpress.com/2017/08/playlist-model.png)
