@@ -1,0 +1,24 @@
+<%= form_for @song, html: {class: "ui form"} do |f| %>
+    <div class="field">
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+    </div>
+    <div class="field">
+      <%= f.label :artist_id %>
+      <%= f.collection_select :artist_id, Artist.order(:name), :id, :name, prompt: true %>
+    </div>
+    <div class="field">
+      <%= f.label :genre_ids, "Genres" %>
+    </div>
+    <div class="inline field">
+      <%= f.collection_check_boxes :genre_ids, Genre.order(:name), :id, :name, {}, class: "ui checkbox" %>
+    </div>
+    <%= f.submit class: "ui primary button" %>
+<% end %>
+<script type="text/javascript">
+  $(document).ready(function() {
+      $('.ui.checkbox')
+          .checkbox()
+      ;
+  })
+</script>
