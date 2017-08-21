@@ -13,3 +13,12 @@
  *= require_tree .
  *= require_self
  */
+
+#main {
+    margin: 10px;
+}
+
+.ui.checkbox {
+    margin-right: 5px;
+    margin-left: 5px;
+}
