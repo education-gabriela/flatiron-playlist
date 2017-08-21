@@ -1,8 +1,8 @@
-<h1 class="ui dividing header">Welcome</h1>
+<h1 class="ui dividing header">Welcome, <%= @user.name %> </h1><br>
 <% if @user.id == current_user.id %>
     <%= link_to "Edit Your Profile", edit_user_path(@user), class: "ui button" %><br>
 <% else %>
-    <h2>Here there will be a link to follow</h2>
+    <%= render 'follow_form' if logged_in? %>
 <% end %><br>
 
 <% @user %>
