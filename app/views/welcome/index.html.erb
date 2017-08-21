@@ -1,7 +1,7 @@
 <h1>Welcome</h1><br>
 
 <%if current_user%>
-<%=link_to "Log Out", sessions_destroy_path%><br>
+<%=link_to "Log Out", sessions_destroy_path, method: "DELETE"%><br>
 <%else%>
 <%=link_to "Sign Up for a New Account", new_user_path%>
 <%=link_to "Log In to an Existing Account", login_path%>

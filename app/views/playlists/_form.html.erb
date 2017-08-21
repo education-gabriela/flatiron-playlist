@@ -1,5 +1,7 @@
-<%=form_for @playlist do |f|%>
-<%=f.label :name%><br>
-<%=f.text_field :name%><br>
-<%=f.submit%>
-<%end%>
+<%= form_for @playlist, html: {class: "ui form"} do |f| %>
+    <div class="field">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+    <%= f.submit class: "ui primary button" %>
+<% end %>
