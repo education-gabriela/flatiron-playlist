@@ -1,3 +1,22 @@
-<h1 class="ui dividing header">Welcome, <%=@user.name%></h1><br>
+<h1 class="ui dividing header">Welcome</h1>
+<% if @user.id == current_user.id %>
+    <%= link_to "Edit Your Profile", edit_user_path(@user), class: "ui button" %><br>
+<% else %>
+    <h2>Here there will be a link to follow</h2>
+<% end %><br>
 
-<%=link_to "Edit Your Profile", edit_user_path(@user), class: "ui button"%>
+<% @user %>
+<div class="stats">
+  <a href="<%= following_user_path(@user) %>">
+    <strong id="following" class="stat">
+      <%= @user.following.count %>
+    </strong>
+    following
+  </a>
+  <a href="<%= followers_user_path(@user) %>">
+    <strong id="followers" class="stat">
+      <%= @user.followers.count %>
+    </strong>
+    followers
+  </a>
+</div>
