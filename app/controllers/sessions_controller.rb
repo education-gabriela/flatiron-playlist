@@ -1,6 +1,7 @@
 class SessionsController<ApplicationController
 
   def new
+    @user = User.new
   end
 
   def create
@@ -27,7 +28,7 @@ class SessionsController<ApplicationController
       session[:user_id] = @user.id
       redirect_to root_path
     else
-      render :'users/new'
+      redirect_to new_user_path
     end
   end
 

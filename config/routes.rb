@@ -27,4 +27,7 @@ Rails.application.routes.draw do
   resources :relationships, only: [:create, :destroy]
   resources :likes, only: [:create, :destroy]
   get '/auth/facebook/callback' => 'sessions#create'
+
+  post '/search', to: 'songs#search'
+  get '/search', to: 'songs#search'
 end
