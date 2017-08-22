@@ -36,6 +36,15 @@ class SongsController < ApplicationController
     end
   end
 
+  def search
+    term = params[:term]
+    search = Song.search do
+      fulltext term
+    end
+    @songs = search.results
+    render "songs/index"
+  end
+
   private
 
   def song_params

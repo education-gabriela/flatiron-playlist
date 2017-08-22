@@ -272,8 +272,6 @@ DEPENDENCIES
   omniauth
   omniauth-facebook
   progress_bar
-
-
   pry
   public_activity (~> 1.5)
   puma (~> 3.7)

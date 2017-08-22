@@ -11,9 +11,9 @@ The DB model is the following:
 Run one by one in this order:
 
 ```
-rake db:migrate
-rails db < db/artists.sql
-rails db < db/songs.sql
 rake sunspot:solr:run &
+rake db:migrate
+rails db < db/sql/artists.sql
+rails db < db/sql/songs.sql
 rake db:seed
 ```
