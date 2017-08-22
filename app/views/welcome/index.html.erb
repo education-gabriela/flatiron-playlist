@@ -1,3 +1,5 @@
 <h1>Welcome</h1>
+<%if @activities && current_user%>
+<%=render_activities @activities%>
 
-
+<%end%>

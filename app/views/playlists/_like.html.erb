@@ -1,6 +1,6 @@
 <%@playlist = Playlist.find_by(id: params[:id])%>
 <% unless current_user == (@user) %>
-  <% if @playlist.likes != [] && @playlist.likes.each {|like| like.user_id == current_user.id}%>
+  <% if @playlist.likes != [] && @playlist.likes.find {|like| like.user_id == current_user.id}%>
     <%= form_for(@playlist.likes.find_by(user_id: current_user.id),
                html: { method: :delete }) do |f| %>
                <%=f.hidden_field :user_id, :value => current_user.id%>

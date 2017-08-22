@@ -19,7 +19,7 @@ class PlaylistsController<ApplicationController
   end
 
   def show
-    @playlist = Playlist.find_by(id: params[:id], user: current_user)
+    @playlist = Playlist.find_by(id: params[:id])
     @like = Like.new
   end
 
@@ -49,15 +49,17 @@ class PlaylistsController<ApplicationController
     end
   end
 
-  private
-  def playlist_params
-    params.require(:playlist).permit(:name)
-  end
-
   def likes
     @playlist = Playlist.find_by(id: params[:id])
     @likes = @playlist.likes
     render 'show_like'
   end
+
+  private
+  def playlist_params
+    params.require(:playlist).permit(:name)
+  end
+
+
 
 end
