@@ -1,7 +1,7 @@
 <h1 class="ui dividing header"><%= @playlist.name %></h1>
-<p><em>Created By: <%= @playlist.user.name %></em></p>
+<%= paginate @songs, window: 2 %><p><em>Created By: <%= @playlist.user.name %></em></p>
 
-<% unless @playlist.songs.empty? %>
+<% unless @songs.empty? %>
     <%= form_for @playlist, url: delete_songs_from_playlist_path, html: {class: "ui form"}, method: :delete do |f| %>
         <table class="ui teal table">
           <thead>
@@ -13,7 +13,7 @@
           </tr>
           </thead>
           <tbody>
-          <% @playlist.songs.each do |song| %>
+          <% @songs.each do |song| %>
               <tr>
                 <td class="center aligned">
                   <input type="checkbox" name="playlist[song_ids][]" value="<%= song.id %>">

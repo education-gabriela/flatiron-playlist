@@ -20,6 +20,7 @@ class PlaylistsController<ApplicationController
 
   def show
     @playlist = Playlist.find_by(id: params[:id])
+    @songs = Song.joins(:playlist_songs).where(playlist_songs: {playlist: @playlist}).includes(:artist).page params[:page]
     @like = Like.new
   end
 
