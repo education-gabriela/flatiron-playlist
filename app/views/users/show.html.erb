@@ -1,4 +1,4 @@
-<h1 class="ui dividing header">Welcome, <%= @user.name %> </h1><br>
+<h1 class="ui dividing header"><%= @user.name %> </h1><br>
 <% if @user.id == current_user.id %>
     <%= link_to "Edit Your Profile", edit_user_path(@user), class: "ui button" %><br>
 <% else %>
