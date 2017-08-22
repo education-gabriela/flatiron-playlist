@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :artists, except: [:destroy]
   resources :genres, except: [:destroy]
   resources :songs, except: [:destroy]
-  resources :users, except: [:destroy, :index]
+  resources :users, except: [:destroy]
 
   post '/playlist/songs', to: 'playlists#add_songs', as: :add_songs_to_playlist
   delete '/playlist/:id/songs', to: 'playlists#delete_songs', as: :delete_songs_from_playlist
@@ -26,4 +26,5 @@ Rails.application.routes.draw do
 
   resources :relationships, only: [:create, :destroy]
   resources :likes, only: [:create, :destroy]
+  get '/auth/facebook/callback' => 'sessions#create'
 end

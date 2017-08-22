@@ -24,4 +24,6 @@ class User < ApplicationRecord
     following.include?(other_user)
   end
 
+
+
 end

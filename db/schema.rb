@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170822155418) do
+ActiveRecord::Schema.define(version: 20170822192802) do
 
   create_table "activities", force: :cascade do |t|
     t.string "trackable_type"
@@ -89,20 +89,13 @@ ActiveRecord::Schema.define(version: 20170822155418) do
     t.string "spotify_id"
   end
 
-  create_table "tmp_songs", force: :cascade do |t|
-    t.text "spotify_id"
-    t.text "title"
-    t.text "artist"
-    t.text "album"
-    t.index ["id"], name: "sqlite_autoindex_tmp_songs_1", unique: true
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "uid"
   end
 
 end

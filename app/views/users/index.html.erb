@@ -1,0 +1,4 @@
+<h2 class="ui dividing header">All Users</h2>
+<% @users.each do |user|%>
+<%=link_to user.name, user_path(user)%><br><br>
+<%end%>
