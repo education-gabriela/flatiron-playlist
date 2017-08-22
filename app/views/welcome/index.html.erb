@@ -1,5 +1,14 @@
 <h1>Welcome</h1>
-<%if @activities && current_user%>
-<%=render_activities @activities%>
 
+<h2>Activity</h2>
+
+<div class="ui feed">
+   <div class="event">
+
+<%if @activities && current_user%>
+<%@activities.each do |activity|%>
+  <%=render_activity activity%>
 <%end%>
+<%end%>
+</div>
+</div>
