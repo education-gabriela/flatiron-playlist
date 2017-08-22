@@ -6,4 +6,8 @@
 <% if @playlist.user == current_user %>
     <%= link_to "Edit this Playlist", edit_playlist_path(@playlist), class: "ui button" %>
     <%= link_to "Delete this Playlist", playlist_path(@playlist), method: "DELETE" , class: "ui red button"%>
-<% end %>
+<% else%>
+<%=render 'like' if logged_in?%>
+<%end%><br>
+
+  <%=link_to @playlist.likes.count, likes_playlist_path(@playlist)%> Likes

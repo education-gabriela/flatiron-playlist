@@ -20,6 +20,7 @@ end
 
 def show
   @playlist = Playlist.find_by(id: params[:id])
+  @like = Like.new
 end
 
 def destroy
@@ -35,6 +36,12 @@ def update
   @playlist = Playlist.find_by(id: params[:id])
   @playlist.update(playlist_params)
   redirect_to playlist_path(@playlist)
+end
+
+def likes
+  @playlist = Playlist.find_by(id: params[:id])
+  @likes = @playlist.likes
+  render 'show_like'
 end
 
 private

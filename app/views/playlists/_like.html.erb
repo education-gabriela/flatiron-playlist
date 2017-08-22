@@ -1,0 +1,19 @@
+<%@playlist = Playlist.find_by(id: params[:id])%>
+<% unless current_user == (@user) %>
+  <% if @playlist.likes != [] && @playlist.likes.each {|like| like.user_id == current_user.id}%>
+    <%= form_for(@playlist.likes.find_by(user_id: current_user.id),
+               html: { method: :delete }) do |f| %>
+               <%=f.hidden_field :user_id, :value => current_user.id%>
+               <%=f.hidden_field :playlist_id, :value => @playlist.id%>
+    <%= f.submit "Unlike", class: "ui primary button" %>
+  <% end %>
+  <% else %>
+  <%= form_for(@playlist.likes.build) do |f| %>
+
+    <div><%= hidden_field_tag :user_id, current_user.id %></div>
+    <%=hidden_field_tag :playlist_id, @playlist.id%>
+    <%= f.submit "Like", class: "ui primary button" %>
+  <% end %>
+  <% end %>
+
+<% end %>
