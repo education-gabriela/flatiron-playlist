@@ -25,3 +25,8 @@
 nav {
     float: right
 }
+
+.monospace {
+    font-family: Inconsolata, monospace;
+    font-size: 14pt;
+}
