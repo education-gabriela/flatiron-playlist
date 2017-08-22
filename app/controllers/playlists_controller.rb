@@ -20,6 +20,7 @@ class PlaylistsController<ApplicationController
 
   def show
     @playlist = Playlist.find_by(id: params[:id], user: current_user)
+    @like = Like.new
   end
 
   def destroy
@@ -51,6 +52,12 @@ class PlaylistsController<ApplicationController
   private
   def playlist_params
     params.require(:playlist).permit(:name)
+  end
+
+  def likes
+    @playlist = Playlist.find_by(id: params[:id])
+    @likes = @playlist.likes
+    render 'show_like'
   end
 
 end
