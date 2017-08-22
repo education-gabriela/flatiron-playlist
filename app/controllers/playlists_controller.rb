@@ -14,7 +14,7 @@ class PlaylistsController<ApplicationController
     if @playlist.save
       redirect_to playlist_path(@playlist)
     else
-      render :'/playlists/new'
+      redirect_to new_playlist_path
     end
   end
 
@@ -40,13 +40,29 @@ class PlaylistsController<ApplicationController
 
   def add_songs
     @playlist = Playlist.find_by(id: params[:playlist][:id], user: current_user)
-    song_ids = params[:playlist][:song_ids].map(&:to_i) + @playlist.song_ids
+    song_ids = (params[:playlist][:song_ids].map(&:to_i) + @playlist.song_ids).uniq if @playlist && params[:playlist]
 
     if @playlist && @playlist.update(song_ids: song_ids)
       redirect_to playlist_path(@playlist)
     else
+      flash[:messages] = ["Playlist not found."]
       redirect_to songs_path
     end
+  end
+
+  def delete_songs
+    @playlist = Playlist.find_by(id: params[:id], user: current_user)
+
+    song_ids = @playlist.song_ids
+    if params[:playlist]
+      song_ids -= params[:playlist][:song_ids].map(&:to_i)
+    end
+
+    unless @playlist && @playlist.update(song_ids: song_ids)
+      flash[:messages] = ["Playlist not found."]
+    end
+
+    redirect_to playlist_path(@playlist)
   end
 
   def likes
@@ -59,7 +75,4 @@ class PlaylistsController<ApplicationController
   def playlist_params
     params.require(:playlist).permit(:name)
   end
-
-
-
 end

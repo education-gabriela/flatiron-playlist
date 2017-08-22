@@ -22,3 +22,11 @@
     margin-right: 5px;
     margin-left: 5px;
 }
+nav {
+    float: right
+}
+
+.monospace {
+    font-family: Inconsolata, monospace;
+    font-size: 14pt;
+}
