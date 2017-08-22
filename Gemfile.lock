@@ -254,11 +254,15 @@ DEPENDENCIES
   kaminari
   listen (>= 3.0.5, < 3.2)
 <<<<<<< HEAD
+<<<<<<< HEAD
   omniauth
   omniauth-facebook
 =======
   progress_bar
 >>>>>>> 84a6a190f9338f10b4f51aebb2ad2dbe52116818
+=======
+  progress_bar
+>>>>>>> brigit
   pry
   public_activity (~> 1.5)
   puma (~> 3.7)
