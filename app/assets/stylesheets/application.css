@@ -30,3 +30,10 @@ nav {
     font-family: Inconsolata, monospace;
     font-size: 14pt;
 }
+
+.profile {
+    min-height:100px;
+}
+.profile.stats {
+    width: 100%;
+}

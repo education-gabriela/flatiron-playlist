@@ -24,4 +24,8 @@ class User < ApplicationRecord
     following.include?(other_user)
   end
 
+  def gravatar_hash
+    Digest::MD5.hexdigest self.email
+  end
+
 end
