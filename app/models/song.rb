@@ -4,8 +4,14 @@ class Song < ApplicationRecord
   has_many :genres, through: :song_genres
   has_many :playlist_songs
   has_many :playlists, through: :playlist_songs
-  include PublicActivity::Model
-  tracked only: [:create], owner: :user
 
   validates :title, :artist, presence: true
+
+  searchable do
+    text :title
+    text :artist do
+      artist.name
+    end
+    integer :artist_id
+  end
 end
