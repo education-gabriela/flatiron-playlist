@@ -8,6 +8,10 @@
       <%= f.collection_select :artist_id, Artist.order(:name), :id, :name, prompt: true %>
     </div>
     <div class="field">
+      <%= f.label :spotify_id, "Spotify ID" %>
+      <%= f.text_field :spotify_id %>
+    </div>
+    <div class="field">
       <%= f.label :genre_ids, "Genres" %>
     </div>
     <div class="inline field">

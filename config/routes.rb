@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :users, except: [:destroy, :index]
 
   post '/playlist/songs', to: 'playlists#add_songs', as: :add_songs_to_playlist
-  delete '/playlist/:id/songs', to: 'playlist#delete_songs', as: :delete_songs_from_playlist
+  delete '/playlist/:id/songs', to: 'playlists#delete_songs', as: :delete_songs_from_playlist
 
   resources :playlists
   get '/login', to: 'sessions#new'

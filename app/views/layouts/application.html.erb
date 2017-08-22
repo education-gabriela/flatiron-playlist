@@ -13,6 +13,18 @@
       <%= render "header" %>
     </header>
     <div class="ui main segment" id="main">
+      <% if flash[:messages] %>
+          <div class="ui error message">
+            <div class="header">
+              There were some errors with your submission
+            </div>
+            <ul>
+              <% flash[:messages].each do |msg| %>
+                  <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+      <% end %>
       <%= yield %>
     </div>
   </body>
