@@ -1,38 +1,39 @@
 <h1 class="ui dividing header"><%= @playlist.name %></h1>
 <p><em>Created By: <%= @playlist.user.name %></em></p>
 
-<%= form_for :playlist, url: delete_songs_from_playlist_path, html: {class: "ui form"} do |f| %>
-    <table class="ui teal table">
-      <thead>
-      <tr>
-        <th class="one wide">Select</th>
-        <th>Title</th>
-        <th>Artist</th>
-        <th>Actions</th>
-      </tr>
-      </thead>
-      <tbody>
-      <% @playlist.songs.each do |song| %>
+<% unless @playlist.songs.empty? %>
+    <%= form_for @playlist, url: delete_songs_from_playlist_path, html: {class: "ui form"}, method: :delete do |f| %>
+        <table class="ui teal table">
+          <thead>
           <tr>
-            <td class="center aligned">
-              <input type="checkbox" name="playlist[song_ids][]" value="<%= song.id %>">
-            </td>
-            <td><%= link_to song.title, song_path(song) %></td>
-            <td><%= link_to song.artist.name, artist_path(song.artist) %></td>
-            <td>&nbsp;</td>
+            <th class="one wide">Select</th>
+            <th>Title</th>
+            <th>Artist</th>
+            <th>Actions</th>
           </tr>
-      <% end %>
-      </tbody>
-    </table>
-    <p><%= submit_tag "Delete selected from Playlist", class: "ui red button" %></p>
+          </thead>
+          <tbody>
+          <% @playlist.songs.each do |song| %>
+              <tr>
+                <td class="center aligned">
+                  <input type="checkbox" name="playlist[song_ids][]" value="<%= song.id %>">
+                </td>
+                <td><%= link_to song.title, song_path(song) %></td>
+                <td><%= link_to song.artist.name, artist_path(song.artist) %></td>
+                <td>&nbsp;</td>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+        <p><%= submit_tag "Delete selected from Playlist", class: "ui red button" %></p>
+    <% end %>
 <% end %>
-
 <% if @playlist.user == current_user %>
     <div class="ui divider"></div>
     <%= link_to "Edit this Playlist", edit_playlist_path(@playlist), class: "ui button" %>
-    <%= link_to "Delete this Playlist", playlist_path(@playlist), method: "DELETE" , class: "ui red button"%>
-<% else%>
-<%=render 'like' if logged_in?%>
-<%end%><br>
+    <%= link_to "Delete this Playlist", playlist_path(@playlist), method: "DELETE", class: "ui red button" %>
+<% else %>
+    <%= render 'like' if logged_in? %>
+<% end %><br>
 
-  <%=link_to @playlist.likes.count, likes_playlist_path(@playlist)%> Likes
+<%= link_to @playlist.likes.count, likes_playlist_path(@playlist) %> Likes
