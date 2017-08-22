@@ -1,7 +1,31 @@
 <h2 class="ui dividing header">All Songs</h2>
 <p><%= link_to "Create new Song", new_song_path, class: "ui button" %></p>
-<ul>
-  <% @songs.each do |song| %>
-      <li><%= link_to song.title, song_path(song) %></li>
-  <% end %>
-</ul>
+<%= form_for :playlist, url: add_songs_to_playlist_path, html: {class: "ui form"} do |f| %>
+    <table class="ui teal table">
+      <thead>
+      <tr>
+        <th class="one wide">Select</th>
+        <th>Title</th>
+        <th>Artist</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @songs.each do |song| %>
+          <tr>
+            <td class="center aligned">
+            <input type="checkbox" name="playlist[song_ids][]" value="<%= song.id %>">
+            </td>
+            <td><%= link_to song.title, song_path(song) %></td>
+            <td><%= link_to song.artist.name, artist_path(song.artist) %></td>
+            <td>&nbsp;</td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <div class="three wide field">
+      <%= f.label :id %>
+      <%= f.collection_select :id, current_user_playlists, :id, :name, prompt: true %>
+    </div>
+    <p><%= submit_tag "Add to selected Playlist", class: "ui teal button" %></p>
+<% end %>

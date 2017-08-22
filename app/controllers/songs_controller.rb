@@ -2,7 +2,7 @@ class SongsController < ApplicationController
   def index
     @songs = Song.order(:title)
   end
-
+  
   def new
     @song = Song.new
   end
