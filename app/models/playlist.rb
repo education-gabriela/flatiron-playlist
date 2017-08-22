@@ -2,7 +2,7 @@ class Playlist < ApplicationRecord
   belongs_to :user
   has_many :playlist_songs
   has_many :songs, through: :playlist_songs
-  has_many :likes
+  has_many :likes, :dependent => :delete_all
   has_many :liking_users, :through => :likes, :source => :user
   include PublicActivity::Model
   tracked only: [:create], owner: :user

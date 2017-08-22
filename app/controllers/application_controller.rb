@@ -14,4 +14,5 @@ class ApplicationController < ActionController::Base
   def current_user_playlists
     Playlist.where(user: current_user)
   end
+  
 end

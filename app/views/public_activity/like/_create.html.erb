@@ -3,14 +3,11 @@
      <div class="content">
 
   <div class="summary">
+    <% if activity.trackable.playlist %>
     <%= link_to activity.owner.name, activity.owner if activity.owner%>
     liked
-    <% if activity.trackable %>
-      <%= link_to activity.trackable.playlist.name, activity.trackable.playlist %>
-    <% else %>
-      which has since been removed
+      <%= link_to activity.trackable.playlist.name, activity.trackable.playlist%>
+      <div class="date">
+        <%=activity.created_at.to_date%>
+      </div>
     <% end %>
-
-          <div class="date">
-            <%=activity.created_at.to_date%>
-          </div>

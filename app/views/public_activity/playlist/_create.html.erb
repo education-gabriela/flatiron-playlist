@@ -3,18 +3,16 @@
 <div class="content">
 
   <div class="summary">
+    <% if activity.trackable.name %>
     <%= link_to activity.owner.name, activity.owner if activity.owner%>
-    created a new playlist,
-    <% if activity.trackable %>
-      <%= link_to activity.trackable.name, activity.trackable %>
-    <% else %>
-      which has since been removed
-    <% end %>
+    created
+      <%= link_to activity.trackable.name, activity.trackable%>
     <div class="meta">
         <a class="like">
           <i class="like icon"></i> <%=activity.trackable.likes.count%> likes
         </a>
       </div>
-    <div class="date">
-      <%=activity.created_at.to_date%>
+      <div class="date">
+        <%=activity.created_at.to_date%>
       </div>
+    <% end %>
