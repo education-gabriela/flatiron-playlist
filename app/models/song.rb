@@ -10,7 +10,7 @@ class Song < ApplicationRecord
   searchable do
     text :title
     text :artist do
-      artist.name
+      artist.name if artist
     end
     integer :artist_id
   end
