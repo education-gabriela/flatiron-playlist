@@ -1,5 +1,7 @@
 <h2 class="ui dividing header">All Songs</h2>
-<p><%= link_to "Create new Song", new_song_path, class: "ui button" %></p>
+<%= paginate @songs, window: 2 %>
+<p><%= link_to "Create new Song", new_song_path, class: "ui olive button" %>
+</p>
 <%= form_for :playlist, url: add_songs_to_playlist_path, html: {class: "ui form"} do |f| %>
     <table class="ui teal table">
       <thead>
@@ -24,7 +26,7 @@
       </tbody>
     </table>
     <div class="three wide field">
-      <%= f.label :id %>
+      <%= f.label :id, "Playlist" %>
       <%= f.collection_select :id, current_user_playlists, :id, :name, prompt: true %>
     </div>
     <p><%= submit_tag "Add to selected Playlist", class: "ui teal button" %></p>
