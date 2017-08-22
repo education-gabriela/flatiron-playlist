@@ -1,5 +1,6 @@
-<h2 class="ui dividing header">All Songs</h2>
+<h2 class="ui dividing header">Songs</h2>
+<%= render partial: "songs/search" %>
+<div class="ui divider"></div>
 <%= paginate @songs, window: 2 %>
 <p><%= link_to "Create new Song", new_song_path, class: "ui olive button" %></p>
-
-<%= render partial: "playlists/add", locals: {songs: @songs} %>
+<%= render partial: "playlists/add", locals: {songs: @songs} unless @songs.empty? %>
