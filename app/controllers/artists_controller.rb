@@ -1,6 +1,6 @@
 class ArtistsController < ApplicationController
   def index
-    @artists = Artist.order(:name)
+    @artists = Artist.joins(:songs).group(:id).order(:name).select(:id, :name, "count(*) AS total").page params[:page]
   end
 
   def new

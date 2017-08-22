@@ -1,7 +1,22 @@
 <h2 class="ui dividing header">Artists</h2>
-<p><%= link_to "Create new Artist", new_artist_path, class: "ui button" %></p>
-<ul>
+<%= paginate @artists, window: 2 %>
+<p><%= link_to "Create new Artist", new_artist_path, class: "ui olive button" %></p>
+
+<table class="ui teal table">
+  <thead>
+  <tr>
+    <th>Artist</th>
+    <th>Total Songs</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
   <% @artists.each do |artist| %>
-      <li><%= link_to artist.name, artist_path(artist) %></li>
+    <tr>
+      <td><%= link_to artist.name, artist_path(artist) %></td>
+      <td><%= artist.total %></td>
+      <td>&nbsp;</td>
+    </tr>
   <% end %>
-</ul>
+  </tbody>
+</table>

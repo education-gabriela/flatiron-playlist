@@ -1,3 +1,6 @@
 <h2 class="ui dividing header"><%= @artist.name %></h2>
 <p><%= link_to "Edit", edit_artist_path(@artist), class: "ui button" %></p>
+
+<%= render partial: "playlists/add", locals: {songs: @artist.songs} %>
+
 <p><%= link_to "All Artists", artists_path %></p>

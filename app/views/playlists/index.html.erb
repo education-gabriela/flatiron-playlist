@@ -1,5 +1,5 @@
 <h2 class="ui dividing header">All Playlists</h2>
-<p><%= link_to "Create a New Playlist", new_playlist_path, class: "ui button" %></p>
+<p><%= link_to "Create a New Playlist", new_playlist_path, class: "ui olive button" %></p>
 <ul>
 <% @playlists.each do |playlist| %>
     <li><%= link_to playlist.name, playlist_path(playlist) %></li>
