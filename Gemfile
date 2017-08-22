@@ -32,6 +32,10 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 # Paginator
 gem 'kaminari'
+# Solr for Search
+gem 'progress_bar'
+gem 'sunspot_rails'
+gem 'sunspot_solr' # optional pre-packaged Solr distribution for use in development
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
