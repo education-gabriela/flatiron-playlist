@@ -1,5 +1,5 @@
 <h1 class="ui dividing header"><%= @playlist.name %></h1>
-<%= paginate @songs, window: 2 %><p><em>Created By: <%= @playlist.user.name %></em></p>
+<%= paginate @songs, window: 2 %><p><em>Created By: <%= @playlist.user.name if @playlist.user%></em></p>
 
 <% unless @songs.empty? %>
     <%= form_for @playlist, url: delete_songs_from_playlist_path, html: {class: "ui form"}, method: :delete do |f| %>
@@ -33,7 +33,7 @@
     <%= link_to "Edit this Playlist", edit_playlist_path(@playlist), class: "ui button" %>
     <%= link_to "Delete this Playlist", playlist_path(@playlist), method: "DELETE", class: "ui red button" %>
 <% else %>
-    <%= render 'like' if logged_in? %>
+    <%= render 'like' %>
 <% end %><br>
 
 <%= link_to @playlist.likes.count, likes_playlist_path(@playlist) %> Likes
