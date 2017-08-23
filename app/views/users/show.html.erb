@@ -17,12 +17,11 @@
     </div>
     <%= render 'follow_form' unless @user.id == current_user.id %>
   </div>
-  <span class="clearfix"></span>
 </div>
-<div class="playlists">
-  <ul>
+<div class="clearing playlists" style="margin-top: 50px">
+  <div class="ui cards">
     <% @user.playlists.each do |playlist| %>
-        <li><%= playlist.name %> - <%= pluralize(playlist.songs.count, "song") %></li>
+        <%= render partial: "playlists/playlist", locals: {playlist: playlist, color: "olive"} %>
     <% end %>
-  </ul>
+  </div>
 </div>

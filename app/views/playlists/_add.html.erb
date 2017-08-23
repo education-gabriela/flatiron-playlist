@@ -5,6 +5,7 @@
         <th class="one wide">Select</th>
         <th class="three wide">Title</th>
         <th class="three wide">Artist</th>
+        <th class="two wide">Genre</th>
         <th>Playlists</th>
       </tr>
       </thead>
@@ -16,6 +17,7 @@
             </td>
             <td><%= link_to song.title, song_path(song) %></td>
             <td><%= link_to song.artist.name, artist_path(song.artist) %></td>
+            <td><%= song.genres.map(&:name).join(", ") %></td>
             <td>
              <% color = ["red", "orange", "yellow", "olive", "green", "teal", "blue", "violet", "purple", "pink", "brown", "grey", "black"] %>
               <% song.playlists.each do |playlist| %>

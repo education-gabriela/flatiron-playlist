@@ -7,9 +7,9 @@
           <thead>
           <tr>
             <th class="one wide">Select</th>
-            <th>Title</th>
-            <th>Artist</th>
-            <th>Actions</th>
+            <th class="three wide">Title</th>
+            <th class="three wide">Artist</th>
+            <th>Genre</th>
           </tr>
           </thead>
           <tbody>
@@ -20,7 +20,7 @@
                 </td>
                 <td><%= link_to song.title, song_path(song) %></td>
                 <td><%= link_to song.artist.name, artist_path(song.artist) %></td>
-                <td>&nbsp;</td>
+                <td><%= song.genres.map(&:name).join(", ") %></td>
               </tr>
           <% end %>
           </tbody>

@@ -1,12 +1,17 @@
 <h1>Likes</h1>
 
 <h2><%= @playlist.name %></h2>
-<%= link_to "View The Playlist", @playlist %><br><br><br>
+<p><%= link_to "View The Playlist", @playlist, class: "ui olive button" %></p>
 
-<% if @likes.any? %>
-    <% @likes.each do |like| %>
-        <%= link_to like.user.name, user_path(like.user) %><br>
-    <% end %>
+
+<div>
+  <% if @likes.any? %>
+    <div class="ui cards">
+      <% @likes.each do |like| %>
+          <%= render partial: "users/card", locals: {user: like.user} %>
+      <% end %>
+    </div>
 <% else %>
     No likes yet!
 <% end %>
+</div>

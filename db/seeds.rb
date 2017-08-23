@@ -1,5 +1,5 @@
 32.times do |x|
-  user = {name: Faker::Name.name, email: Faker::Internet.email, password: "123"}
+  user = {name: Faker::Name.name, email: Faker::Internet.email, password: ""}
   User.create(user)
 end
 
@@ -20,6 +20,10 @@ playlists.each do |playlist_name|
   songs.uniq!
   playlist.song_ids = songs
   playlist.save
+end
+
+Song.all.each do |song|
+  song.genre_ids = [Genre.all.sample.id]
 end
 
 User.reindex

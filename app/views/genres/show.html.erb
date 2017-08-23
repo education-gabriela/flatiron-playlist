@@ -1,3 +1,9 @@
 <h2 class="ui dividing header"><%= @genre.name %></h2>
-<p><%= link_to "Edit", edit_genre_path(@genre), class: "ui button" %></p>
-<p><%= link_to "All Genres", genres_path %></p>
+<p style="float:left;margin-top: -8px"><%= link_to "Edit", edit_genre_path(@genre), class: "ui button" %></p>
+<div style="margin-bottom: 50px;">
+  <%= paginate @songs, window: 2 %>
+</div>
+
+<div class="ui divider"></div>
+<%= render partial: "playlists/add", locals: {songs: @songs} unless @songs.empty? %>
+<p><%= link_to "All Genres", genres_path, class: "ui button" %></p>
