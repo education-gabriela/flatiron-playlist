@@ -9,7 +9,7 @@
       <%= user.name %> has <%= pluralize(user.playlists.count, "playlist") %>.
     </div>
   </div>
-  <div class="extra content">
+  <div class="extra content" style="min-height: 50.17px !important">
     <span class="right floated">
       Joined in <%= user.created_at.year %>
     </span>
@@ -19,7 +19,7 @@
             <%= f.hidden_field :unfollow_user_id, :value => user.id %>
             <%= f.submit "Unfollow", class: "mini ui button" %><br>
         <% end %>
-    <% else %>
+    <% elsif current_user.id != user.id %>
         <%= form_for(current_user.active_relationships.build) do |f| %>
             <div><%= hidden_field_tag :followed_id, user.id %></div>
             <%= f.submit "Follow", class: "mini ui button" %><br>
