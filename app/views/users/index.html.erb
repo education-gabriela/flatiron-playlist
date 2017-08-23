@@ -1,6 +1,12 @@
 <h2 class="ui dividing header">All Users</h2>
+<%= render partial: "users/search" %>
+<div class="ui divider"></div>
+<div style="margin-bottom: 50px;">
+  <%= paginate @users, window: 2 %>
+</div>
+<div class="ui clearing divider"></div>
 <div class="ui link cards">
   <% @users.each do |user| %>
-    <%= render partial: "card", locals: {user: user} %>
+      <%= render partial: "card", locals: {user: user} %>
   <% end %>
 </div>

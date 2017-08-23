@@ -12,6 +12,11 @@ class User < ApplicationRecord
   validates :email, presence: true
   validates :email, uniqueness: true
 
+  searchable do
+    text :name
+    text :email
+  end
+
   def follow(other_user)
     following << other_user
   end
