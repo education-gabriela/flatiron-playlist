@@ -4,25 +4,25 @@
   </div>
   <div>
     <h1 class="ui dividing header"><%= @user.name %> </h1><br>
-    <% if @user.id == current_user.id %>
-        <%= link_to "Edit Your Profile", edit_user_path(@user), class: "ui button" %><br>
-    <% else %>
-        <%= render 'follow_form' %>
-    <% end %><br>
+    <div class="ui compact menu">
+      <a class="item" href="<%= following_user_path(@user) %>">
+        <i class="icon user"></i> Following
+        <div class="floating ui red label"><%= @user.following.count %></div>
+      </a>
+      <a class="item" href="<%= followers_user_path(@user) %>">
+        <i class="icon users"></i> Followers
+        <div class="floating ui teal label"><%= @user.followers.count %></div>
+      </a>
+      <%= link_to "Edit Your Profile", edit_user_path(@user), class: "item" if @user.id == current_user.id %>
+    </div>
+    <%= render 'follow_form' unless @user.id == current_user.id %>
   </div>
   <span class="clearfix"></span>
-  <div class="stats">
-    <a href="<%= following_user_path(@user) %>">
-      <strong id="following" class="stat">
-        <%= @user.following.count %>
-      </strong>
-      following
-    </a>
-    <a href="<%= followers_user_path(@user) %>">
-      <strong id="followers" class="stat">
-        <%= @user.followers.count %>
-      </strong>
-      followers
-    </a>
-  </div>
+</div>
+<div class="playlists">
+  <ul>
+    <% @user.playlists.each do |playlist| %>
+        <li><%= playlist.name %> - <%= pluralize(playlist.songs.count, "song") %></li>
+    <% end %>
+  </ul>
 </div>

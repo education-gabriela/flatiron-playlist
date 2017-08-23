@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :playlists, dependent: :destroy
-  has_secure_password
+  has_many :playlist_songs, through: :playlists
+  has_many :songs, through: :playlist_songs
   has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :following, through: :active_relationships, source: :followed
   has_many :passive_relationships, class_name: "Relationship", foreign_key:"followed_id", dependent: :destroy
@@ -11,6 +12,8 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :email, presence: true
   validates :email, uniqueness: true
+
+  has_secure_password
 
   searchable do
     text :name
