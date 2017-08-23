@@ -1,7 +1,7 @@
 <div class="card">
   <div class="content">
     <div class="header"><%= playlist.name %></div>
-    <div class="meta"><i class="user outline icon"></i><i>Curated by</i> <%= playlist.user.name %></div>
+    <div class="meta"><i class="user outline icon"></i><i>Curated by</i> <%= playlist.user.try(:name) %></div>
     <div class="description">
       <ul class="">
         <li><i class="music icon"></i><%= pluralize(playlist.songs.count, "song") %></li>
