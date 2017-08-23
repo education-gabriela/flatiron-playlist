@@ -6,16 +6,16 @@
   <thead>
   <tr>
     <th class="three wide">Artist</th>
-    <th>Total Songs</th>
-    <th>Actions</th>
+    <th class="two wide ui center aligned">Total Songs</th>
+    <th>Songs</th>
   </tr>
   </thead>
   <tbody>
   <% @artists.each do |artist| %>
     <tr>
       <td><%= link_to artist.name, artist_path(artist) %></td>
-      <td><%= artist.total %></td>
-      <td>&nbsp;</td>
+      <td class="ui center aligned"><%= artist.total %></td>
+      <td><%= artist.songs.limit(3).map(&:title).join(", ") %></td>
     </tr>
   <% end %>
   </tbody>
