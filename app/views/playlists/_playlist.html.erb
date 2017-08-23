@@ -1,0 +1,13 @@
+<div class="card">
+  <div class="content">
+    <div class="header"><%= playlist.name %></div>
+    <div class="meta"><i class="user outline icon"></i><i>Curated by</i> <%= playlist.user.name %></div>
+    <div class="description">
+      <ul class="">
+        <li><i class="music icon"></i><%= pluralize(playlist.songs.count, "song") %></li>
+        <li><i class="heart icon"></i><%= pluralize(playlist.likes.count, "like") %></li>
+      </ul>
+    </div>
+  </div>
+  <%= link_to "<i class=\"eye icon\"></i> See Playlist".html_safe, playlist_path(playlist), class: "ui #{color} bottom attached button" %>
+</div>

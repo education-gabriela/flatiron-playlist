@@ -37,3 +37,8 @@ nav {
 .profile.stats {
     width: 100%;
 }
+
+.padding_button {
+    padding-top: 10px;
+    display: block;
+}

@@ -7,13 +7,17 @@ Rails.application.routes.draw do
   resources :users, except: [:destroy]
 
   post '/playlist/songs', to: 'playlists#add_songs', as: :add_songs_to_playlist
+  get '/playlists/owned', to: 'playlists#owned'
+  get '/playlists/explore', to: 'playlists#explore'
   delete '/playlist/:id/songs', to: 'playlists#delete_songs', as: :delete_songs_from_playlist
 
   resources :playlists
+
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/sessions/destroy', to: 'sessions#destroy'
   root 'welcome#index'
+
   resources :users do
     member do
       get :following, :followers

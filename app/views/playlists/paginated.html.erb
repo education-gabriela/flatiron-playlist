@@ -1,0 +1,7 @@
+<h2 class="ui dividing header"><%= title %></h2>
+<%= paginate @playlists, window: 2 %>
+<div class="ui cards">
+  <% @playlists.each do |playlist| %>
+      <%= render partial: "playlist", locals: {playlist: playlist, color: color} %>
+  <% end %>
+</div>

@@ -1,8 +1,23 @@
 <h2 class="ui dividing header">All Playlists</h2>
 <p><%= link_to "Create a New Playlist", new_playlist_path, class: "ui olive button" %></p>
-<ul>
-<% @playlists.each do |playlist| %>
-    <li><%= link_to playlist.name, playlist_path(playlist) %></li>
-<% end %>
-</ul>
+
+<h3 class="ui dividing header">My Playlists</h3>
+<div class="ui cards">
+  <% @my_playlists.each do |my_playlist| %>
+      <%= render partial: "playlist", locals: {playlist: my_playlist, color: "pink"} %>
+  <% end %>
+</div>
+<br>
+<%= link_to "<i class=\"folder open outline icon\"></i>See all my playlists".html_safe,
+            playlists_owned_path, class: "ui green button" %>
+<h3 class="ui dividing header">Explore Playlists</h3>
+
+<div class="ui cards">
+  <% @others_playlists.each do |other_playlist| %>
+      <%= render partial: "playlist", locals: {playlist: other_playlist, color: "purple"} %>
+  <% end %>
+</div>
+<br>
+<%= link_to "<i class=\"world icon\"></i>Explore playlists".html_safe, playlists_explore_path,
+            class: "ui green button" %>
 

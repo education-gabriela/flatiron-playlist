@@ -1,7 +1,8 @@
 class PlaylistsController<ApplicationController
 
   def index
-    @playlists = Playlist.all
+    @my_playlists = Playlist.where(user: current_user).limit(5)
+    @others_playlists = Playlist.where.not(user: current_user).limit(5)
   end
 
   def new
@@ -70,6 +71,16 @@ class PlaylistsController<ApplicationController
     @playlist = Playlist.find_by(id: params[:id])
     @likes = @playlist.likes
     render 'show_like'
+  end
+
+  def owned
+    @playlists = current_user.playlists.page params[:page]
+    render 'paginated', locals: {color: "pink", title: "My Playlists"}
+  end
+
+  def explore
+    @playlists = Playlist.where.not(user: current_user).page params[:page]
+    render 'paginated', locals: {color: "purple", title: "Explore Playlists"}
   end
 
   private
