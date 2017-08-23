@@ -1,8 +1,9 @@
 class SongsController < ApplicationController
+  before_action :require_login
   def index
     @songs = Song.order(:title).includes(:artist).includes(:playlists).page params[:page]
   end
-  
+
   def new
     @song = Song.new
   end
