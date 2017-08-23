@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   resources :artists, except: [:destroy]
   resources :genres, except: [:destroy]
   resources :songs, except: [:destroy]
+
+  get '/users/search', to: 'users#search'
   resources :users, except: [:destroy]
 
   post '/playlist/songs', to: 'playlists#add_songs', as: :add_songs_to_playlist

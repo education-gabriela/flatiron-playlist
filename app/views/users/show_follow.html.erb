@@ -1,10 +1,12 @@
-<h1><%=@title.capitalize%></h1>
+<h1><%= @title.capitalize %></h1>
 
-<h2><%=@user.name%></h2>
-  <%=link_to "View My Profile", @user%><br><br><br>
+<h2><%= @user.name %></h2>
+<%= link_to "View My Profile", @user %><br><br><br>
 
-<%if @users.any?%>
-<%@users.each do |user|%>
-<%=link_to user.name, user_path(user)%><br>
-<%end%>
-<%end%>
+<% if @users.any? %>
+    <div class="ui link cards">
+      <% @users.each do |user| %>
+          <%= render partial: "card", locals: {user: user} %>
+      <% end %>
+    </div>
+<% end %>
