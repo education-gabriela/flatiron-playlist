@@ -5,7 +5,7 @@
         <th class="one wide">Select</th>
         <th class="three wide">Title</th>
         <th class="three wide">Artist</th>
-        <th>Actions</th>
+        <th>Playlists</th>
       </tr>
       </thead>
       <tbody>
@@ -16,7 +16,12 @@
             </td>
             <td><%= link_to song.title, song_path(song) %></td>
             <td><%= link_to song.artist.name, artist_path(song.artist) %></td>
-            <td>&nbsp;</td>
+            <td>
+             <% color = ["red", "orange", "yellow", "olive", "green", "teal", "blue", "violet", "purple", "pink", "brown", "grey", "black"] %>
+              <% song.playlists.each do |playlist| %>
+                <%= link_to playlist.name, playlist_path(playlist), class: "ui #{color.sample} tag label" %>
+              <% end %>
+            </td>
           </tr>
       <% end %>
       </tbody>
