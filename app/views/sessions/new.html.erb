@@ -10,5 +10,6 @@
       <%= password_field_tag :'user[password]' %>
     </div>
     <%= submit_tag "Sign In", class: "ui green button" %>
+    <%= link_to('<i class="facebook icon"></i> Log in Facebook!'.html_safe, '/auth/facebook', class: "ui facebook button") %>
 <% end %>
-<%= link_to(' Or log in with Facebook!', '/auth/facebook') %>
+
