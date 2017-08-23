@@ -28,4 +28,12 @@ class User < ApplicationRecord
     Digest::MD5.hexdigest self.email
   end
 
+  def self.from_omniauth(auth)
+    where(uid: auth.uid).new do |user|
+      user.email = auth.info.email
+      user.name = auth.info.name
+    end
+  end
+
+
 end
