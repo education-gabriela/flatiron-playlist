@@ -1,4 +1,5 @@
 class ArtistsController < ApplicationController
+  before_action :require_login
   def index
     @artists = Artist.joins(:songs).group(:id).order(:name).select(:id, :name, "count(*) AS total").page params[:page]
   end

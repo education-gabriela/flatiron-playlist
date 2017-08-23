@@ -1,4 +1,5 @@
 class PlaylistsController<ApplicationController
+  before_action :require_login
 
   def index
     @playlists = Playlist.all
