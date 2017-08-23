@@ -3,7 +3,7 @@ class PlaylistsController<ApplicationController
 
   def index
     @my_playlists = Playlist.where(user: current_user).limit(5)
-    @others_playlists = Playlist.where.not(user: current_user).limit(5)
+    @others_playlists = Playlist.where.not(user: current_user).order("RANDOM()").limit(5)
   end
 
   def new

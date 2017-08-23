@@ -1,12 +1,12 @@
 <h1>Likes</h1>
 
-<h2><%=@playlist.name%></h2>
-  <%=link_to "View The Playlist", @playlist%><br><br><br>
+<h2><%= @playlist.name %></h2>
+<%= link_to "View The Playlist", @playlist %><br><br><br>
 
-<%if @likes.any?%>
-<%@likes.each do |like|%>
-<%=link_to like.user.name, user_path(like.user)%><br>
-<%end%>
-<%else%>
-No likes yet!
-<%end%>
+<% if @likes.any? %>
+    <% @likes.each do |like| %>
+        <%= link_to like.user.name, user_path(like.user) %><br>
+    <% end %>
+<% else %>
+    No likes yet!
+<% end %>
