@@ -1,0 +1,20 @@
+<li class="comment">
+  <div class="body">
+    <div class="content">
+      <a class="author"><%=comment.user.name%></a>
+      <div class="text">
+    <%=comment.body%>
+  </div>
+  </div>
+  <ul class="comment list">
+  <p><%=link_to "Add a Reply", new_comment_comment_path(comment)%></p>
+  <%unless comment.comments.empty? %>
+  <div class="comments">
+    <div class="comment">
+       <%=render :partial => 'comments/comment', :collection => comment.comments%></a>
+     </div>
+    <%end%>
+
+  </ul>
+
+</li>

@@ -30,6 +30,14 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :playlists do
+    resources :comments
+  end
+
+  resources :comments do
+    resources :comments
+  end
+
   resources :relationships, only: [:create, :destroy]
   resources :likes, only: [:create, :destroy]
   get '/auth/facebook/callback' => 'sessions#create'

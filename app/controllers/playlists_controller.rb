@@ -24,6 +24,7 @@ class PlaylistsController<ApplicationController
     @playlist = Playlist.find_by(id: params[:id])
     @songs = Song.joins(:playlist_songs).where(playlist_songs: {playlist: @playlist}).includes(:artist).page params[:page]
     @like = Like.new
+    @comment = @playlist.comments.new
   end
 
   def destroy

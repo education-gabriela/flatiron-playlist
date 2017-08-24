@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :follower
   has_many :likes, :dependent => :delete_all
   has_many :liked_playlists, :through =>  :likes, :source => :playlist
+  has_many :comments
 
   validates :name, presence: true
   validates :email, presence: true
