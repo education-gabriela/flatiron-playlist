@@ -39,9 +39,11 @@
 <%= link_to @playlist.likes.count, likes_playlist_path(@playlist) %> Likes
 <div class="ui comments">
   <h3 class="ui dividing header">Comments</h3>
+<%if @playlist.comments%>
   <div class="comment">
 <p><%=render :partial => 'comments/new', locals: {comment: @comment}%>
 <ul class="comment_list">
   <%=render :partial => 'comments/comment', :collection => @playlist.comments%>
+  <%end%>
 </ul>
 </div>

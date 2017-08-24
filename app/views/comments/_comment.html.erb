@@ -1,13 +1,15 @@
 <li class="comment">
   <div class="body">
     <div class="content">
-      <a class="author"><%=comment.user.name%></a>
+      <a class="author"><%=comment.user.try(:name)%></a>
       <div class="text">
-    <%=comment.body%>
+    <%=comment.try(:body)%>
   </div>
   </div>
   <ul class="comment list">
+    <%if params[:comment_id] !=nil%>
   <p><%=link_to "Add a Reply", new_comment_comment_path(comment)%></p>
+  <%end%>
   <%unless comment.comments.empty? %>
   <div class="comments">
     <div class="comment">
