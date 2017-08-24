@@ -22,7 +22,7 @@ class PlaylistsController<ApplicationController
 
   def show
     @playlist = Playlist.find_by(id: params[:id])
-    @songs = Song.joins(:playlist_songs).where(playlist_songs: {playlist: @playlist}).includes(:artist).page params[:page]
+    @songs = Song.joins(:playlist_songs).where(playlist_songs: {playlist: @playlist}).includes(:artist).includes(:genres).page params[:page]
     @like = Like.new
     @comment = @playlist.comments.new
   end
@@ -90,15 +90,15 @@ class PlaylistsController<ApplicationController
       flash[:messages] = ["You need to add your Spotify username"]
       redirect_to edit_user_path(current_user)
     end
-    @spotify_api = SpotifyApi.new
-    @playlists = @spotify_api.client.user_playlists(current_user.spotify_username)["items"]
+    spotify_api = SpotifyApi.new
+    @playlists = spotify_api.client.user_playlists(current_user.spotify_username)["items"]
   end
 
   def import_save
-    @spotify_api = SpotifyApi.new
-    @playlist = @spotify_api.client.user_playlist(params[:spotify_username], params[:id])
-    @tracks = @spotify_api.client.user_playlist_tracks(params[:spotify_username], params[:id])
-    tracks_to_import = @tracks["items"].collect do |item|
+    spotify_api = SpotifyApi.new
+    @playlist = spotify_api.client.user_playlist(params[:spotify_username], params[:id])
+    tracks = spotify_api.client.user_playlist_tracks(params[:spotify_username], params[:id])
+    tracks_to_import = tracks["items"].collect do |item|
       {
         :artist_name => item["track"]["artists"].first["name"],
         :title => item["track"]["name"],
