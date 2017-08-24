@@ -1,7 +1,7 @@
 <h2 class="ui dividing header">All Playlists</h2>
 <p>
-  <%= link_to "Create a New Playlist", new_playlist_path, class: "ui olive button" %>
-  <%= link_to "Import playlist from Spotify", playlists_import_path, class: "ui spotify button" %>
+  <%= link_to "Create a New Playlist", new_playlist_path, class: "ui button" %>
+  <%= link_to "Import playlist from Spotify", playlists_import_path, class: "ui green button" %>
 </p>
 
 <h3 class="ui dividing header">My Playlists</h3>
@@ -12,7 +12,7 @@
 </div>
 <br>
 <%= link_to "<i class=\"folder open outline icon\"></i>See all my playlists".html_safe,
-            playlists_owned_path, class: "ui green button" %>
+            playlists_owned_path, class: "ui orange button" %>
 <h3 class="ui dividing header">Explore Playlists</h3>
 
 <div class="ui cards">
@@ -22,5 +22,5 @@
 </div>
 <br>
 <%= link_to "<i class=\"world icon\"></i>Explore playlists".html_safe, playlists_explore_path,
-            class: "ui green button" %>
+            class: "ui orange button" %>
 
