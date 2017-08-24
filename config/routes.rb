@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   post '/playlist/songs', to: 'playlists#add_songs', as: :add_songs_to_playlist
   get '/playlists/owned', to: 'playlists#owned'
   get '/playlists/explore', to: 'playlists#explore'
+  get '/playlists/import', to: 'playlists#import'
+  post 'playlists/import/:id', to: 'playlists#import_save'
   delete '/playlist/:id/songs', to: 'playlists#delete_songs', as: :delete_songs_from_playlist
 
   resources :playlists

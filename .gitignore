@@ -17,6 +17,7 @@
 !/log/.keep
 !/tmp/.keep
 /solr/*/data
+config/spotify.yml
 
 /node_modules
 /yarn-error.log
