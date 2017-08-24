@@ -11,7 +11,7 @@ class UsersController<ApplicationController
   end
 
   def create
-    @user = User.new(user_params(:name, :email, :password, :password_confirmation))
+    @user = User.new(user_params(:name, :email, :password, :password_confirmation, :spotify_username))
     if @user.save
       session[:user_id] = @user.id
       redirect_to root_path
@@ -30,7 +30,7 @@ class UsersController<ApplicationController
 
   def update
     @user = User.find_by(id: params[:id])
-    @user.update(user_params(:name, :email))
+    @user.update(user_params(:name, :email, :spotify_username))
     redirect_to user_path(@user)
   end
 

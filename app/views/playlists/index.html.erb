@@ -1,5 +1,8 @@
 <h2 class="ui dividing header">All Playlists</h2>
-<p><%= link_to "Create a New Playlist", new_playlist_path, class: "ui olive button" %></p>
+<p>
+  <%= link_to "Create a New Playlist", new_playlist_path, class: "ui olive button" %>
+  <%= link_to "Import playlist from Spotify", playlists_import_path, class: "ui spotify button" %>
+</p>
 
 <h3 class="ui dividing header">My Playlists</h3>
 <div class="ui cards">

@@ -1,0 +1,19 @@
+<h2 class="ui dividing header">Playlists for <%= current_user.spotify_username %></h2>
+<div class="ui cards">
+  <% @playlists.each do |playlist| %>
+      <div class="card">
+        <div class="content">
+          <div class="header"><%= playlist["name"] %></div>
+          <div class="meta"><i class="user outline icon"></i><i>Curated by</i> <%= playlist["owner"]["display_name"] %></div>
+          <div class="description">
+            <ul class="">
+              <li><i class="music icon"></i><%= pluralize(playlist["tracks"]["total"], "song") %></li>
+              <li><i class="file icon"></i><%= playlist["id"] %></li>
+            </ul>
+          </div>
+        </div>
+        <%= link_to "<i class=\"plus icon\"></i> Import Playlist".html_safe, "/playlists/import/#{playlist["id"]}" , method: :post, class: "ui olive bottom attached button" %>
+      </div>
+
+<% end %>
+</div>

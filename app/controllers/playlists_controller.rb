@@ -85,6 +85,36 @@ class PlaylistsController<ApplicationController
     render 'paginated', locals: {color: "purple", title: "Explore Playlists"}
   end
 
+  def import
+    unless current_user.spotify_username
+      flash[:messages] = ["You need to add your Spotify username"]
+      redirect_to edit_user_path(current_user)
+    end
+    @spotify_api ||= SpotifyApi.new
+    @playlists = @spotify_api.client.user_playlists(current_user.spotify_username)["items"]
+  end
+
+  def import_save
+    @spotify_api ||= SpotifyApi.new
+    @playlist = @spotify_api.client.user_playlist(current_user.spotify_username, params[:id])
+    @tracks = @spotify_api.client.user_playlist_tracks(current_user.spotify_username, params[:id])
+    tracks_to_import = @tracks["items"].collect do |item|
+      {
+        :artist_name => item["track"]["artists"].first["name"],
+        :title => item["track"]["name"],
+        :spotify_id => item["track"]["id"]
+      }
+    end
+    playlist = Playlist.new(name: @playlist["name"], user: current_user)
+    tracks_to_import.each do |track|
+      song = Song.find_or_initialize_by(spotify_id: track[:spotify_id])
+      song.update(track)
+      playlist.songs << song
+    end
+    playlist.save
+    redirect_to playlist_path(playlist.id)
+  end
+
   private
   def playlist_params
     params.require(:playlist).permit(:name)

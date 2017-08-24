@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170824141940) do
+ActiveRecord::Schema.define(version: 20170824135558) do
 
   create_table "activities", force: :cascade do |t|
     t.string "trackable_type"
@@ -106,6 +106,7 @@ ActiveRecord::Schema.define(version: 20170824141940) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "uid"
+    t.string "spotify_username"
   end
 
 end
