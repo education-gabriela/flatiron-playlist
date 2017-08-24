@@ -86,12 +86,13 @@ class PlaylistsController<ApplicationController
   end
 
   def import
-    unless current_user.spotify_username
+    if current_user.spotify_username.nil?
       flash[:messages] = ["You need to add your Spotify username"]
       redirect_to edit_user_path(current_user)
+    else
+      spotify_api = SpotifyApi.new
+      @playlists = spotify_api.client.user_playlists(current_user.spotify_username)["items"]
     end
-    spotify_api = SpotifyApi.new
-    @playlists = spotify_api.client.user_playlists(current_user.spotify_username)["items"]
   end
 
   def import_save

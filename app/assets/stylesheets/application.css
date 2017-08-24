@@ -42,3 +42,7 @@ nav {
     padding-top: 10px;
     display: block;
 }
+
+.ui.feed>.event>.content .meta {
+    margin: 0;
+}
