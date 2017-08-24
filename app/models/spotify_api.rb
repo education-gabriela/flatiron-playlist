@@ -14,6 +14,7 @@ class SpotifyApi
                                {'grant_type' => 'client_credentials'},
                                {"Authorization" => "Basic #{grant}"})
     self.response = JSON.parse(response.body)
+    self.token = self.response["access_token"]
     config = {
       :access_token =>  self.response["access_token"],  # initialize the client with an access token to perform authenticated calls
       :raise_errors => true,  # choose between returning false or raising a proper exception when API calls fails

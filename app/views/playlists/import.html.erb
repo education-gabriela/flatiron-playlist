@@ -12,8 +12,10 @@
             </ul>
           </div>
         </div>
-        <%= link_to "<i class=\"plus icon\"></i> Import Playlist".html_safe, "/playlists/import/#{playlist["id"]}" , method: :post, class: "ui olive bottom attached button" %>
+        <%= form_tag "/playlists/import/#{playlist["id"]}", method: :post do %>
+            <%= hidden_field_tag :spotify_username, playlist["owner"]["id"] %>
+          <%= submit_tag "[+] Import Playlist".html_safe, class: "fluid ui olive bottom attached button" %>
+        <% end %>
       </div>
-
 <% end %>
 </div>
