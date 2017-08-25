@@ -43,6 +43,7 @@ class SongsController < ApplicationController
       fulltext term
     end
     @songs = search.results
+    @songs = Song.order(:title).includes(:artist).includes(:playlists).includes(:genres).where(id: @songs.pluck(:id)).page params[:page]
     render "songs/index"
   end
 
