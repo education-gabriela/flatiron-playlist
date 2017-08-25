@@ -28,7 +28,7 @@ class PlaylistsController<ApplicationController
   end
 
   def destroy
-    Playlist.find_by(params[:id]).destroy
+    Playlist.find(params[:id]).destroy
     redirect_to playlists_path
   end
 
