@@ -13,7 +13,9 @@
       <% songs.each do |song| %>
           <tr>
             <td class="center aligned">
-              <input type="checkbox" name="playlist[song_ids][]" value="<%= song.id %>">
+              <div class="ui checkbox">
+                <input type="checkbox" name="playlist[song_ids][]" class="ui checkbox" value="<%= song.id %>">
+              </div>
             </td>
             <td><%= link_to song.title, song_path(song) %></td>
             <td><%= link_to song.artist.name, artist_path(song.artist) %></td>
@@ -29,8 +31,8 @@
       </tbody>
     </table>
     <div class="three wide field">
-      <%= f.label :id, "Playlist" %>
-      <%= f.collection_select :id, current_user_playlists, :id, :name, prompt: true %>
+      <%= f.label :id, "Playlists" %>
+      <%= f.collection_select :id, current_user_playlists, :id, :name, {prompt: true}, {class: "ui search dropdown"} %>
     </div>
     <p><%= submit_tag "Add to selected Playlist", class: "ui teal button" %></p>
 <% end %>
