@@ -1,5 +1,6 @@
-<h1 class="ui dividing header">Welcome</h1>
+<h1 class="ui dividing header">Welcome to the Flatiron Playlist</h1>
 
+<%if current_user%>
 <h2>Activity<i class="feed icon"></i></h2>
 
 <div class="ui feed">
@@ -9,3 +10,12 @@
       <% end %>
   <% end %>
 </div>
+
+<%else%>
+<div class="ui centered image">
+  <svg width="400" height="400">
+    <image xmlns:xlink="http://tabtimes.com/wp-content/uploads/2016/09/iPhone-7-EarPods-headphones.jpg?x15434" xlink:href="http://tabtimes.com/wp-content/uploads/2016/09/iPhone-7-EarPods-headphones.jpg?x15434" x="0" y="0" width="100%" height="100%"></image>
+  </svg>
+</div>
+<h3>Log in or create an account above to connect with your friends through playlists.</h3>
+<%end%>
