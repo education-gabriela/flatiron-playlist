@@ -10,18 +10,6 @@
     integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
     crossorigin="anonymous"></script>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('.ui.checkbox')
-                .checkbox()
-            ;
-
-            $('select.dropdown')
-                .dropdown()
-            ;
-        })
-    </script>
   </head>
 
   <body>
@@ -43,5 +31,17 @@
       <% end %>
       <%= yield %>
     </div>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.ui.checkbox')
+                .checkbox()
+            ;
+
+            $('select.dropdown')
+                .dropdown()
+            ;
+        })
+    </script>
   </body>
 </html>

@@ -37,6 +37,16 @@ class ArtistsController < ApplicationController
     end
   end
 
+  def search
+    term = params[:term]
+    search = Artist.search do
+      fulltext term
+    end
+    @artists = search.results
+    @artists = Artist.joins(:songs).where(id: @artists.pluck(:id)).group(:id).order(:name).select(:id, :name, "count(*) AS total").page params[:page]
+    render "artists/index"
+  end
+
   private
 
   def artist_params

@@ -1,4 +1,6 @@
 <h2 class="ui dividing header">Artists</h2>
+<%= render partial: "search" %>
+<div class="ui divider"></div>
 <%= paginate @artists, window: 2 %>
 <p><%= link_to "Create new Artist", new_artist_path, class: "ui olive button" %></p>
 

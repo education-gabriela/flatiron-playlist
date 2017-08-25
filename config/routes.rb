@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get '/artists/search', to: 'artists#search'
   resources :artists, except: [:destroy]
   resources :genres, except: [:destroy]
   resources :songs, except: [:destroy]
