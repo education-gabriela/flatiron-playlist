@@ -28,6 +28,7 @@ class PlaylistsController<ApplicationController
   end
 
   def destroy
+    binding.pry
     Playlist.find_by(params[:id]).destroy
     redirect_to playlists_path
   end
