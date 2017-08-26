@@ -46,6 +46,8 @@ gem 'rest-client'
 gem 'spotify-client'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+# MySQL
+gem 'mysql2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
