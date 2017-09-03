@@ -18,7 +18,8 @@
 !/tmp/.keep
 /solr/*/data
 config/spotify.yml
-
+config/database.yml
+config/initializers/omniauth.rb
 /node_modules
 /yarn-error.log
 
