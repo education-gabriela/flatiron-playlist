@@ -20,6 +20,7 @@ describe 'Genre' do
   end
 
   it 'must have a unique name' do
+    rock_1 = Genre.create(name: "rock")
     rock_2 = Genre.create(name: "rock")
     expect(rock_2.errors.count).to be > 0
     expect(rock_2.errors.messages[:name].first).to eq("has already been taken")
