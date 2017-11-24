@@ -12,15 +12,15 @@
 
 ActiveRecord::Schema.define(version: 20170824141940) do
 
-  create_table "activities", force: :cascade do |t|
+  create_table "activities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "trackable_type"
-    t.integer "trackable_id"
+    t.bigint "trackable_id"
     t.string "owner_type"
-    t.integer "owner_id"
+    t.bigint "owner_id"
     t.string "key"
     t.text "parameters"
     t.string "recipient_type"
-    t.integer "recipient_id"
+    t.bigint "recipient_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["owner_id", "owner_type"], name: "index_activities_on_owner_id_and_owner_type"
@@ -31,13 +31,14 @@ ActiveRecord::Schema.define(version: 20170824141940) do
     t.index ["trackable_type", "trackable_id"], name: "index_activities_on_trackable_type_and_trackable_id"
   end
 
-  create_table "artists", force: :cascade do |t|
+  create_table "artists", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_artists_on_name"
   end
 
-  create_table "comments", force: :cascade do |t|
+  create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.text "body"
     t.integer "commentable_id"
     t.string "commentable_type"
@@ -47,34 +48,34 @@ ActiveRecord::Schema.define(version: 20170824141940) do
     t.index ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type"
   end
 
-  create_table "genres", force: :cascade do |t|
+  create_table "genres", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "likes", force: :cascade do |t|
+  create_table "likes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer "user_id"
     t.integer "playlist_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "playlist_songs", force: :cascade do |t|
+  create_table "playlist_songs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer "playlist_id"
     t.integer "song_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "playlists", force: :cascade do |t|
+  create_table "playlists", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "name"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "relationships", force: :cascade do |t|
+  create_table "relationships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer "follower_id"
     t.integer "followed_id"
     t.datetime "created_at", null: false
@@ -84,22 +85,24 @@ ActiveRecord::Schema.define(version: 20170824141940) do
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
   end
 
-  create_table "song_genres", force: :cascade do |t|
+  create_table "song_genres", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer "song_id"
     t.integer "genre_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "songs", force: :cascade do |t|
+  create_table "songs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "title"
-    t.integer "artist_id"
+    t.bigint "artist_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "spotify_id"
+    t.index ["artist_id"], name: "fk_rails_5ce8fd4cc7"
+    t.index ["title"], name: "index_songs_on_title"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "name"
     t.string "email"
     t.string "password_digest"
@@ -109,4 +112,5 @@ ActiveRecord::Schema.define(version: 20170824141940) do
     t.string "spotify_username"
   end
 
+  add_foreign_key "songs", "artists"
 end
